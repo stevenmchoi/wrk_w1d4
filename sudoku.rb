@@ -10,9 +10,9 @@ class SudokuGame
   end
 
   def initialize(board)
-    @board = [[]]
+    @board = board
   end
-  
+
   def method_missing(method_name, *args)
     if method_name =~ /val/
       Integer(1)
@@ -65,7 +65,7 @@ class SudokuGame
   end
 
   def solved?
-    self.solved?
+    board.solved?
   end
 
   def valid_pos?(pos)
@@ -75,8 +75,9 @@ class SudokuGame
       return true
     else
       get_pos
+    end
   end
-
+  
   def valid_val?(val)
     val.is_a?(Integer) ||
       val.between?(0, 9)
