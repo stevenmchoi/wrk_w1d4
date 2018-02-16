@@ -29,7 +29,7 @@ class SudokuGame
       print "> "
 
       begin
-        pos = parse_pos(gets)
+        pos = parse_pos(gets.chomp)
       rescue
         # TODO: Google how to print the error that happened inside of a rescue statement.'
         puts "Invalid position entered (did you use a comma?)"
@@ -46,9 +46,17 @@ class SudokuGame
     until val && valid_val?(val)
       puts "Please enter a value between 1 and 9 (0 to clear the tile)"
       print "> "
-      val = parse_val(gets)
+      val = parse_val(gets.chomp)
     end
     val
+  end
+
+  def parse_pos(string)
+    string.split(',').map(&:to_i)
+  end
+
+  def parse_val(string)
+    string.to_i
   end
 
   def play_turn
