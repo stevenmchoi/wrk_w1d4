@@ -51,6 +51,14 @@ class SudokuGame
     val
   end
 
+  def parse_pos(string)
+    pos = string.split(',').map(&:to_i)
+  end
+
+  def parse_val(string)
+    val = string.to_i
+  end
+
   def play_turn
     board.render
     pos = get_pos
