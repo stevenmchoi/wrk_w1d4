@@ -46,7 +46,16 @@ class SudokuGame
     until val && valid_val?(val)
       puts "Please enter a value between 1 and 9 (0 to clear the tile)"
       print "> "
-      val = parse_val(gets.chomp)
+
+      begin
+        val = parse_val(gets.chomp)
+      rescue
+        # TODO: Google how to print the error that happened inside of a rescue statement.'
+        puts "Invalid value entered (did you use a number?)"
+        puts ""
+
+        val = nil
+      end
     end
     val
   end
@@ -87,7 +96,7 @@ class SudokuGame
   end
 
   def valid_val?(val)
-    val.is_a?(Integer) ||
+    val.is_a?(Integer) &&
       val.between?(0, 9)
   end
 
