@@ -61,11 +61,11 @@ class SudokuGame
   end
 
   def parse_pos(string)
-    string.split(',').map(&:to_i)
+    string.split(',').map { |el| Integer(el) }
   end
 
   def parse_val(string)
-    string.to_i
+    Integer(string)
   end
 
   def play_turn
