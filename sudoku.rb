@@ -77,7 +77,7 @@ class SudokuGame
       get_pos
     end
   end
-  
+
   def valid_val?(val)
     val.is_a?(Integer) ||
       val.between?(0, 9)
@@ -89,3 +89,4 @@ end
 
 
 game = SudokuGame.from_file("puzzles/sudoku1.txt")
+game.run
